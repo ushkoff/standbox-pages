@@ -2,14 +2,6 @@
 
 </template>
 
-<script>
-export default {
-  components: {
-    //
-  }
-}
-</script>
-
 <style lang="less" scoped>
 @import '~assets/less/utils/_vars';
 

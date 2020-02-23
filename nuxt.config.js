@@ -23,6 +23,7 @@ export default {
   ** Global CSS
   */
   css: [
+    '~assets/less/main.less'
   ],
   /*
   ** Plugins to load before mounting the App
@@ -39,7 +40,6 @@ export default {
   */
   modules: [
     // Doc: https://bootstrap-vue.js.org
-    'bootstrap-vue/nuxt',
     '@nuxtjs/pwa',
   ],
   /*
