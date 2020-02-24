@@ -2,7 +2,7 @@
   <div>
     <UserSidebar />
 
-    <div>
+    <div class="container">
       <HeaderCustom />
       <nuxt />
       <FooterCustom />
@@ -32,4 +32,8 @@ export default {
 <style lang="less" scoped>
 @import '~assets/less/utils/_vars';
 
+.container {
+  padding-left: 212px;
+  padding-right: 120px;
+}
 </style>

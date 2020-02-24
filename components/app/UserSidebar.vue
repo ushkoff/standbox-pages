@@ -1,14 +1,14 @@
 <template>
 <div class="user-sidebar">
   <div class="user-sidebar__logo">
-    <span>Standbox</span>
+    <a href="/">Standbox</a>
   </div>
   <div class="user-sidebar__user-info">
     <a href="#" class="logout-btn">
       <img src="@/assets/img/app/logout.svg" alt="logout">
     </a>
     <div class="user">
-      <img src="@/assets/img/user-avatar.jpg" class="user__avatar" alt="user-avatar">
+      <img src="@/assets/img/examples/user-avatar.jpg" class="user__avatar">
       <div>
         <div class="user__name text-break">Илья C.</div>
         <a href="#" class="user__balance">10.999₽</a>
@@ -34,14 +34,6 @@
 </div>
 </template>
 
-<script>
-export default {
-  data: () => ({
-    userAvatarBg: 'background-image: url(' + require('@/assets/img/user-avatar.jpg') + ')'
-  })
-}
-</script>
-
 <style lang="less" scoped>
 @import '~assets/less/utils/_vars';
 
@@ -61,7 +53,7 @@ export default {
     justify-content: center;
     align-items: center;
     border-bottom: 1px solid @defGreyBorder;
-    span {
+    a {
       display: block;
       font-family: Roboto Condensed;
       font-style: normal;
@@ -69,6 +61,7 @@ export default {
       font-size: 24px;
       text-transform: uppercase;
       color: #fff;
+      text-decoration: none;
     }
   }
   &__user-info {
