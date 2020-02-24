@@ -66,7 +66,6 @@
       text-transform: uppercase;
       color: #fff;
       text-decoration: none;
-<<<<<<< HEAD
     }
   }
   &__login {
@@ -85,8 +84,6 @@
       font-size: 24px;
       text-transform: uppercase;
       color: @defFontYellow;
-=======
->>>>>>> 1bef085ae07baeb634fb90ebeb4d54914a9c4361
     }
   }
   &__user-info {
