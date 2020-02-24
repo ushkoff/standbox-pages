@@ -57,7 +57,7 @@ header {
   border-bottom: 1px solid @defGreyBorder;
   padding-top: 16px;
   padding-left: 50px;
-  padding-right: 40px;
+  padding-right: 48px;
   padding-bottom: 24px;
   .header-list {
     display: flex;
@@ -65,7 +65,7 @@ header {
     .header-list__item {
       display: flex;
       align-items: center;
-      margin-left: 70px;
+      margin-left: 60px;
       &:first-child { margin-left: 0 }
       img {
         width: 70px;

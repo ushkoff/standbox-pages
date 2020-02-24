@@ -1,10 +1,189 @@
 <template>
 <div class="items-sidebar">
+  <div class="items-sidebar__buttons">
+    <div class="btn" :class="{ 'active': activeBtn }" @click="activeBtn = !activeBtn">
+      <img src="@/assets/img/app/livedrop/diamond.svg">
+    </div>
+    <div class="btn" :class="{ 'active': !activeBtn }" @click="activeBtn = !activeBtn">
+      <img src="@/assets/img/app/livedrop/view-module.svg">
+    </div>
+  </div>
+  <div class="items-sidebar__livedrop">
+    <div
+      class="items-sidebar__livedrop__item"
+      :style="`background-image: url('${require('@/assets/img/app/livedrop/livedrop-sprites.png')}')`"
+      style="background-position: -439px"
+      @mouseover="activeAddInfo = true"
+    >
+      <div
+        class="items-sidebar__livedrop__item--img"
+        :style="`background-image: url('${require('@/assets/img/examples/AKR-Treasure-Hunter.png')}')`"
+      >
+      </div>
+      <span class="items-sidebar__livedrop__item--name">Treasure Hunter</span>
 
+      <div class="items-sidebar__livedrop__item--info" v-if="activeAddInfo">
+        <div class="user-info">
+          <img src="@/assets/img/examples/user-avatar.jpg">
+          <span>Илья С.</span>
+        </div>
+        <img src="@/assets/img/examples/csgo-case.png" class="case-img">
+        <span class="case-type">Обычный</span>
+      </div>
+    </div>
+
+    <div
+      v-for="n in 12"
+      class="items-sidebar__livedrop__item"
+      :style="`background-image: url('${require('@/assets/img/app/livedrop/livedrop-sprites.png')}')`"
+      style="background-position: -439px"
+    >
+      <div
+        class="items-sidebar__livedrop__item--img"
+        :style="`background-image: url('${require('@/assets/img/examples/AKR-Treasure-Hunter.png')}')`"
+      >
+      </div>
+      <span class="items-sidebar__livedrop__item--name">Treasure Hunter</span>
+      </div>
+    </div>
+
+  </div>
 </div>
 </template>
+
+<script>
+export default {
+  data: () => ({
+    activeBtn: true,
+    activeAddInfo: true
+  })
+}
+</script>
 
 <style lang="less" scoped>
 @import '~assets/less/utils/_vars';
 
+.items-sidebar {
+  background-color: @defBlackTrans;
+  width: 128px;
+  height: 100%;
+  position: fixed;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  border-left: 1px solid @defGreyBorder;
+  &__buttons {
+    display: flex;
+    .btn {
+      width: 50%;
+      height: 34px;
+      color: #fff;
+      background-color: #292929;
+      text-align: center;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .btn.active {
+      background-color: @defPurpleBg;
+    }
+  }
+  &__livedrop {
+    padding-right: 3px;
+    &__item {
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      width: 100%;
+      height: 80px;
+      padding-bottom: 3px;
+      margin-top: 4px;
+      background-size: auto 128%;
+      background-repeat: no-repeat;
+      text-align: center;
+      position: relative;
+      &--img {
+        position: absolute;
+        width: 95%;
+        height: 95%;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center 65%;
+        transform: rotate(15deg);
+      }
+      &--name {
+        display: block;
+        font-family: Roboto Condensed;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 16px;
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      &--info {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-direction: column;
+        position: absolute;
+        left: -175px;
+        top: -30px;
+        height: 139px;
+        width: 139px;
+        border: 1px solid @defYellowBorder;
+        background: rgba(41, 13, 77, 0.5);
+        padding-top: 5px;
+        padding-bottom: 8px;
+        &:after {
+          content: '';
+          position: absolute;
+          right: -16px;
+          top: 50%;
+          margin-top: -15px;
+          width: 30px;
+          height: 30px;
+          background: rgba(41, 13, 77, 1);
+          transform: rotate(45deg);
+          border-top: 1px solid @defYellowBorder;
+          border-right: 1px solid @defYellowBorder;
+        }
+        .user-info {
+          display: flex;
+          align-items: center;
+          img {
+            margin-right: 5px;
+            width: 20px;
+            height: 20px;
+            clip-path: polygon(10px 0px, 20px 10px, 10px 20px, 0px 10px);
+          }
+          span {
+            font-family: Roboto Condensed;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 14px;
+            line-height: 16px;
+            color: #fff;
+            white-space: nowrap;
+            max-width: 75px;
+            overflow: hidden;
+          }
+        }
+        .case-img {
+          display: block;
+          height: 75px;
+        }
+        .case-type {
+          font-family: Roboto Condensed;
+          font-style: normal;
+          font-weight: normal;
+          font-size: 16px;
+          color: @defFontYellow;
+        }
+      }
+    }
+  }
+}
 </style>
