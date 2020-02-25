@@ -34,6 +34,7 @@
 
     <div
       v-for="n in 12"
+      :key="n"
       class="items-sidebar__livedrop__item"
       :style="`background-image: url('${require('@/assets/img/app/livedrop/livedrop-sprites.png')}')`"
       style="background-position: -439px"
@@ -65,6 +66,9 @@ export default {
 
 .items-sidebar {
   background-color: @defBlackTrans;
+  @media screen and (max-width: @minWindowWidth) {
+    background-color: rgba(0, 0, 0, 0.75)
+  }
   width: 128px;
   height: 100%;
   position: fixed;

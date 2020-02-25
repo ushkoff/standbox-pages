@@ -62,6 +62,7 @@ header {
   .header-list {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     .header-list__item {
       display: flex;
       align-items: center;
@@ -88,6 +89,19 @@ header {
         font-size: 14px;
         line-height: 16px;
         color: #FFFFFF;
+      }
+      @media screen and (max-width: 1550px) {
+        margin-left: 25px;
+        img {
+          width: 50px;
+          height: 50px;
+        }
+        &--number {
+          font-size: 18px;
+        }
+        &--name {
+          font-size: 12px;
+        }
       }
     }
   }

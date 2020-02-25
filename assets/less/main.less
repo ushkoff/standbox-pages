@@ -7,8 +7,45 @@
   box-sizing: border-box;
 }
 body {
+  min-width: @minWindowWidth;
   background-image: url('../img/app/bg1.jpg');
   background-size: cover;
   background-attachment: fixed;
   background-repeat: no-repeat;
+}
+
+.case-item {
+  width: 205px;
+  height: 130px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  background-repeat: no-repeat;
+  background-size: auto 138%;
+  padding-bottom: 3px;
+  margin-top: 30px;
+  &__img {
+    display: block;
+    width: 180px;
+    margin-bottom: 10px;
+  }
+  &__type {
+    font-family: Roboto Condensed;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    color: #fff;
+    position: relative;
+    top: -1px;
+  }
+  &__name {
+    font-family: Roboto Condensed;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.7);
+    position: relative;
+    top: -2px;
+  }
 }
