@@ -17,14 +17,14 @@
     >
       <div
         class="items-sidebar__livedrop__item--img"
-        :style="`background-image: url('${require('@/assets/img/examples/AKR-Treasure-Hunter.png')}')`"
+        :style="`background-image: url('${require('@/assets/img/examples/AK-Vulcan.png')}')`"
       >
       </div>
       <span class="items-sidebar__livedrop__item--name">Treasure Hunter</span>
 
       <div class="items-sidebar__livedrop__item--info" v-if="activeAddInfo">
         <div class="user-info">
-          <img src="@/assets/img/examples/user-avatar.jpg">
+          <img src="@/assets/img/examples/user-avatar.png">
           <span>Илья С.</span>
         </div>
         <img src="@/assets/img/examples/csgo-case.png" class="case-img">
@@ -37,11 +37,16 @@
       :key="n"
       class="items-sidebar__livedrop__item"
       :style="`background-image: url('${require('@/assets/img/app/livedrop/livedrop-sprites.png')}')`"
-      style="background-position: -439px"
+      style="background-position: -297px"
     >
+      <!--  YELLOW -583px -->
+      <!--  RED -439px -->
+      <!--  PURPLE -297px -->
+      <!--  GREEN -153px -->
+      <!--  BLUE -9px -->
       <div
         class="items-sidebar__livedrop__item--img"
-        :style="`background-image: url('${require('@/assets/img/examples/AKR-Treasure-Hunter.png')}')`"
+        :style="`background-image: url('${require('@/assets/img/examples/AK-Vulcan.png')}')`"
       >
       </div>
       <span class="items-sidebar__livedrop__item--name">Treasure Hunter</span>
@@ -113,8 +118,8 @@ export default {
         width: 95%;
         height: 95%;
         background-repeat: no-repeat;
-        background-size: cover;
-        background-position: center 65%;
+        background-size: contain;
+        background-position: center 45%;
         transform: rotate(15deg);
       }
       &--name {

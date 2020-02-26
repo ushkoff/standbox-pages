@@ -1,9 +1,9 @@
 <template>
 <div>
 
-  <Roulette v-if="spin"></Roulette>
+  <Roulette v-if="spin" ref="roulette"></Roulette>
 
-  <!-- <div class="open-case" v-if="!spin">
+  <div class="open-case" v-if="!spin">
     <div class="open-case__title">
       <div class="circles">
         <div class="circle"></div>
@@ -25,7 +25,7 @@
     </div>
     <button
       class="open-case__btn"
-      @click="roll"
+      @click="startRoulette"
     >
       Открыть кейс за <span>500₽</span>
     </button>
@@ -39,9 +39,9 @@
         <li>x10</li>
       </ul>
     </div>
-  </div> -->
+  </div>
 
-  <div class="case-opened" v-if="!spin">
+  <!-- <div class="case-opened" v-if="!spin">
     <div class="case-opened__title">
       <div class="circles">
         <div class="circle"></div>
@@ -58,15 +58,20 @@
       class="case-opened__item"
       :style="`background-image: url('${require('@/assets/img/pages/skindrop-sprites.png')}')`"
       style="background-position: -3120px -100px"
-    >
-      <img class="case-opened__item__img" src="@/assets/img/examples/AK-Vulcan.png">
+    > -->
+      <!--  YELLOW -4155px -100px -->
+      <!--  RED -3120px -100px -->
+      <!--  PURPLE -2080px -100px -->
+      <!--  GREEN -1035px -100px -->
+      <!--  BLUE -0px -100px -->
+      <!-- <img class="case-opened__item__img" src="@/assets/img/examples/AK-Vulcan.png">
     </div>
     <div class="case-opened__buttons">
       <button class="case-opened__buttons--grey">Попробовать ещё</button>
       <button class="case-opened__buttons--purple">Продать за <span>10.000₽</span></button>
       <button class="case-opened__buttons--grey">На главную</button>
     </div>
-  </div>
+  </div> -->
 
   <div class="case-items">
      <div class="case-items__title">
@@ -86,8 +91,13 @@
         :key="n"
         class="case-item"
         :style="`background-image: url('${require('@/assets/img/pages/skindes-sprites.png')}')`"
-        style="background-position: -900px 45%"
+        style="background-position: -10px 45%"
       >
+        <!--  YELLOW -900px -->
+        <!--  RED -675px -->
+        <!--  PURPLE -455px -->
+        <!--  GREEN -230px -->
+        <!--  BLUE -10px -->
         <img class="case-item__img" src="@/assets/img/examples/AK-Vulcan.png">
         <span class="case-item__type">AKR</span>
         <span class="case-item__name">Treasure Hunter</span>
@@ -109,9 +119,9 @@ export default {
     Roulette
   },
   methods: {
-    roll () {
+    startRoulette () {
       this.spin = true
-      // roulette.spin()
+      // Roulette.roll()
     }
   }
 }

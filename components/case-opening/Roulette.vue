@@ -21,8 +21,13 @@
         v-for="n in 10"
         :key="n"
         class="roulette__spinner__items-list__item"
-        style="border-color: #FF0000; box-shadow: inset 0px 2px 50px 0 rgba(255, 0, 0, 0.25)"
+        style="border-color: #FF0000; box-shadow: inset 0px 2px 50px 0 rgba(255, 0, 0, 0.2)"
       >
+        <!--  YELLOW border-color: #FFD600; box-shadow: inset 0px 2px 50px 0 rgba(100, 88, 0, 0.75) -->
+        <!--  RED border-color: #FF0000; box-shadow: inset 0px 2px 50px 0 rgba(255, 0, 0, 0.25) -->
+        <!--  PURPLE border-color: #EB00FF; box-shadow: inset 0px 2px 50px 0 rgba(92, 0, 100, 0.75) -->
+        <!--  GREEN border-color: #5CBAC7; box-shadow: inset 0px 2px 50px 0 rgba(36, 73, 78, 0.75) -->
+        <!--  BLUE border-color: #026FF4; box-shadow: inset 0px 2px 50px 0 rgba(1, 44, 96, 0.75) -->
         <img class="item-img" src="@/assets/img/examples/AK-Vulcan.png">
         <span class="item-type">AKR</span>
         <span class="item-name">Treasure Hunter</span>
@@ -31,6 +36,17 @@
   </div>
 </div>
 </template>
+
+<script>
+export default {
+  data: () => ({}),
+  methods: {
+    roll () {
+      alert(123)
+    }
+  }
+}
+</script>
 
 <style lang="less" scoped>
 @import '~assets/less/utils/_vars';

@@ -12,7 +12,7 @@
       <img src="@/assets/img/app/logout.svg" alt="logout">
     </a>
     <div class="user">
-      <img src="@/assets/img/examples/user-avatar.jpg" class="user__avatar">
+      <img src="@/assets/img/examples/user-avatar.png" class="user__avatar">
       <div>
         <div class="user__name text-break">Илья C.</div>
         <a href="#" class="user__balance">10.999₽</a>
@@ -22,16 +22,16 @@
   <div class="user-sidebar__menu">
     <ul>
       <li>
-        <a href="/123"><img src="@/assets/img/app/menu-icons/home.svg">Главная</a>
+        <a href="/"><img src="@/assets/img/app/menu-icons/home.svg">Главная</a>
       </li>
       <li>
-        <a href="/435"><img src="@/assets/img/app/menu-icons/clipboard-text.svg">Контракты</a>
+        <a href="/case"><img src="@/assets/img/app/menu-icons/clipboard-text.svg">Контракты</a>
       </li>
       <li>
-        <a href="/546"><img src="@/assets/img/app/menu-icons/user.svg">Профиль</a>
+        <a href="/profile"><img src="@/assets/img/app/menu-icons/user.svg">Профиль</a>
       </li>
       <li>
-        <a href="/789"><img src="@/assets/img/app/menu-icons/plus-circle.svg">Пополнение</a>
+        <a href="/"><img src="@/assets/img/app/menu-icons/plus-circle.svg">Пополнение</a>
       </li>
     </ul>
   </div>
