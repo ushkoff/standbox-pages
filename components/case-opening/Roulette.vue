@@ -5,7 +5,7 @@
       <div class="circle"></div>
       <div class="circle"></div>
     </div>
-    <span>Ножевой</span>
+    <span>Обычный</span>
     <div class="circles">
       <div class="circle"></div>
       <div class="circle"></div>
@@ -17,20 +17,23 @@
     :style="`background-image: url('${require('@/assets/img/pages/frame.svg')}')`"
   >
     <div class="roulette__spinner__items-list">
-      <div
-        v-for="n in 10"
-        :key="n"
-        class="roulette__spinner__items-list__item"
-        style="border-color: #FF0000; box-shadow: inset 0px 2px 50px 0 rgba(255, 0, 0, 0.2)"
-      >
-        <!--  YELLOW border-color: #FFD600; box-shadow: inset 0px 2px 50px 0 rgba(100, 88, 0, 0.75) -->
-        <!--  RED border-color: #FF0000; box-shadow: inset 0px 2px 50px 0 rgba(255, 0, 0, 0.25) -->
-        <!--  PURPLE border-color: #EB00FF; box-shadow: inset 0px 2px 50px 0 rgba(92, 0, 100, 0.75) -->
-        <!--  GREEN border-color: #5CBAC7; box-shadow: inset 0px 2px 50px 0 rgba(36, 73, 78, 0.75) -->
-        <!--  BLUE border-color: #026FF4; box-shadow: inset 0px 2px 50px 0 rgba(1, 44, 96, 0.75) -->
-        <img class="item-img" src="@/assets/img/examples/AK-Vulcan.png">
-        <span class="item-type">AKR</span>
-        <span class="item-name">Treasure Hunter</span>
+      <div ref="spinContainer" :style="containerStyles"></div>
+        <div
+          v-for="item in items"
+          :key="item.id"
+          class="roulette__spinner__items-list__item"
+          :class="{ blue: item.quality === 'blue', green: item.quality === 'green', purple: item.quality === 'purple', red: item.quality === 'red', yellow: item.quality === 'yellow' }"
+        >
+          <!-- уже прописано -->
+          <!--  YELLOW border-color: #FFD600; box-shadow: inset 0px 2px 50px 0 rgba(100, 88, 0, 0.75) -->
+          <!--  RED border-color: #FF0000; box-shadow: inset 0px 2px 50px 0 rgba(255, 0, 0, 0.25) -->
+          <!--  PURPLE border-color: #EB00FF; box-shadow: inset 0px 2px 50px 0 rgba(92, 0, 100, 0.75) -->
+          <!--  GREEN border-color: #5CBAC7; box-shadow: inset 0px 2px 50px 0 rgba(36, 73, 78, 0.75) -->
+          <!--  BLUE border-color: #026FF4; box-shadow: inset 0px 2px 50px 0 rgba(1, 44, 96, 0.75) -->
+          <img class="item-img" :src="require(`@/assets/${item.img}`)">
+          <span class="item-type">{{ item.type }}</span>
+          <span class="item-name">{{ item.name }}</span>
+        </div>
       </div>
     </div>
   </div>
@@ -38,11 +41,135 @@
 </template>
 
 <script>
+import rouletteConfig from '@/config/roulette'
+
 export default {
-  data: () => ({}),
+  name: 'roulette',
+  props: [
+    'dropedItemId',
+    'dropedItemType',
+    'dropedItemName',
+    'dropedItemImg',
+    'dropedItemQuality'
+  ],
+  data: () => ({
+    itemWidth: 192,
+    spinTime: rouletteConfig.spinTime,
+    spinDelay: 50,
+
+    items: [
+
+      // 70 items before drop
+
+      { id: 1, type: 'AKR', name: 'Treasure Hunter', img: 'img/examples/AK-Vulcan.png', quality: 'blue' },
+      { id: 2, type: 'AWP', name: 'Asiimov', img: 'img/examples/AWP-Asiimov.png', quality: 'red' },
+      { id: 3, type: 'AKR', name: 'Treasure Hunter', img: 'img/examples/AK-Vulcan.png', quality: 'green' },
+      { id: 4, type: 'M4A4', name: 'Desolate Space', img: 'img/examples/M4A4-DesolateSpace.png', quality: 'purple' },
+      { id: 5, type: 'AWP', name: 'Asiimov', img: 'img/examples/AWP-Asiimov.png', quality: 'red' },
+      { id: 1, type: 'AKR', name: 'Treasure Hunter', img: 'img/examples/AK-Vulcan.png', quality: 'blue' },
+      { id: 3, type: 'AWP', name: 'Asiimov', img: 'img/examples/AWP-Asiimov.png', quality: 'red' },
+      { id: 1, type: 'AKR', name: 'Treasure Hunter', img: 'img/examples/AK-Vulcan.png', quality: 'green' },
+      { id: 2, type: 'M4A4', name: 'Desolate Space', img: 'img/examples/M4A4-DesolateSpace.png', quality: 'purple' },
+      { id: 3, type: 'AWP', name: 'Asiimov', img: 'img/examples/AWP-Asiimov.png', quality: 'red' },
+      { id: 1, type: 'AKR', name: 'Treasure Hunter', img: 'img/examples/AK-Vulcan.png', quality: 'blue' },
+      { id: 3, type: 'AWP', name: 'Asiimov', img: 'img/examples/AWP-Asiimov.png', quality: 'red' },
+      { id: 1, type: 'AKR', name: 'Treasure Hunter', img: 'img/examples/AK-Vulcan.png', quality: 'green' },
+      { id: 2, type: 'M4A4', name: 'Desolate Space', img: 'img/examples/M4A4-DesolateSpace.png', quality: 'purple' },
+      { id: 3, type: 'AWP', name: 'Asiimov', img: 'img/examples/AWP-Asiimov.png', quality: 'red' },
+      { id: 1, type: 'AKR', name: 'Treasure Hunter', img: 'img/examples/AK-Vulcan.png', quality: 'blue' },
+      { id: 3, type: 'AWP', name: 'Asiimov', img: 'img/examples/AWP-Asiimov.png', quality: 'red' },
+      { id: 1, type: 'AKR', name: 'Treasure Hunter', img: 'img/examples/AK-Vulcan.png', quality: 'green' },
+      { id: 2, type: 'M4A4', name: 'Desolate Space', img: 'img/examples/M4A4-DesolateSpace.png', quality: 'purple' },
+      { id: 3, type: 'AWP', name: 'Asiimov', img: 'img/examples/AWP-Asiimov.png', quality: 'red' },
+      { id: 1, type: 'AKR', name: 'Treasure Hunter', img: 'img/examples/AK-Vulcan.png', quality: 'blue' },
+      { id: 3, type: 'AWP', name: 'Asiimov', img: 'img/examples/AWP-Asiimov.png', quality: 'red' },
+      { id: 1, type: 'AKR', name: 'Treasure Hunter', img: 'img/examples/AK-Vulcan.png', quality: 'green' },
+      { id: 2, type: 'M4A4', name: 'Desolate Space', img: 'img/examples/M4A4-DesolateSpace.png', quality: 'purple' },
+      { id: 3, type: 'AWP', name: 'Asiimov', img: 'img/examples/AWP-Asiimov.png', quality: 'red' },
+      { id: 1, type: 'AKR', name: 'Treasure Hunter', img: 'img/examples/AK-Vulcan.png', quality: 'blue' },
+      { id: 3, type: 'AWP', name: 'Asiimov', img: 'img/examples/AWP-Asiimov.png', quality: 'red' },
+      { id: 1, type: 'AKR', name: 'Treasure Hunter', img: 'img/examples/AK-Vulcan.png', quality: 'green' },
+      { id: 2, type: 'M4A4', name: 'Desolate Space', img: 'img/examples/M4A4-DesolateSpace.png', quality: 'purple' },
+      { id: 3, type: 'AWP', name: 'Asiimov', img: 'img/examples/AWP-Asiimov.png', quality: 'red' },
+      { id: 1, type: 'AKR', name: 'Treasure Hunter', img: 'img/examples/AK-Vulcan.png', quality: 'blue' },
+      { id: 3, type: 'AWP', name: 'Asiimov', img: 'img/examples/AWP-Asiimov.png', quality: 'red' },
+      { id: 1, type: 'AKR', name: 'Treasure Hunter', img: 'img/examples/AK-Vulcan.png', quality: 'green' },
+      { id: 2, type: 'M4A4', name: 'Desolate Space', img: 'img/examples/M4A4-DesolateSpace.png', quality: 'purple' },
+      { id: 3, type: 'AWP', name: 'Asiimov', img: 'img/examples/AWP-Asiimov.png', quality: 'red' },
+      { id: 1, type: 'AKR', name: 'Treasure Hunter', img: 'img/examples/AK-Vulcan.png', quality: 'blue' },
+      { id: 3, type: 'AWP', name: 'Asiimov', img: 'img/examples/AWP-Asiimov.png', quality: 'red' },
+      { id: 1, type: 'AKR', name: 'Treasure Hunter', img: 'img/examples/AK-Vulcan.png', quality: 'green' },
+      { id: 2, type: 'M4A4', name: 'Desolate Space', img: 'img/examples/M4A4-DesolateSpace.png', quality: 'purple' },
+      { id: 3, type: 'AWP', name: 'Asiimov', img: 'img/examples/AWP-Asiimov.png', quality: 'red' },
+      { id: 1, type: 'AKR', name: 'Treasure Hunter', img: 'img/examples/AK-Vulcan.png', quality: 'blue' },
+      { id: 3, type: 'AWP', name: 'Asiimov', img: 'img/examples/AWP-Asiimov.png', quality: 'red' },
+      { id: 1, type: 'AKR', name: 'Treasure Hunter', img: 'img/examples/AK-Vulcan.png', quality: 'green' },
+      { id: 2, type: 'M4A4', name: 'Desolate Space', img: 'img/examples/M4A4-DesolateSpace.png', quality: 'purple' },
+      { id: 3, type: 'AWP', name: 'Asiimov', img: 'img/examples/AWP-Asiimov.png', quality: 'red' },
+      { id: 1, type: 'AKR', name: 'Treasure Hunter', img: 'img/examples/AK-Vulcan.png', quality: 'blue' },
+      { id: 3, type: 'AWP', name: 'Asiimov', img: 'img/examples/AWP-Asiimov.png', quality: 'red' },
+      { id: 1, type: 'AKR', name: 'Treasure Hunter', img: 'img/examples/AK-Vulcan.png', quality: 'green' },
+      { id: 2, type: 'M4A4', name: 'Desolate Space', img: 'img/examples/M4A4-DesolateSpace.png', quality: 'purple' },
+      { id: 3, type: 'AWP', name: 'Asiimov', img: 'img/examples/AWP-Asiimov.png', quality: 'red' },
+      { id: 1, type: 'AKR', name: 'Treasure Hunter', img: 'img/examples/AK-Vulcan.png', quality: 'blue' },
+      { id: 3, type: 'AWP', name: 'Asiimov', img: 'img/examples/AWP-Asiimov.png', quality: 'red' },
+      { id: 1, type: 'AKR', name: 'Treasure Hunter', img: 'img/examples/AK-Vulcan.png', quality: 'green' },
+      { id: 2, type: 'M4A4', name: 'Desolate Space', img: 'img/examples/M4A4-DesolateSpace.png', quality: 'purple' },
+      { id: 3, type: 'AWP', name: 'Asiimov', img: 'img/examples/AWP-Asiimov.png', quality: 'red' },
+      { id: 1, type: 'AKR', name: 'Treasure Hunter', img: 'img/examples/AK-Vulcan.png', quality: 'blue' },
+      { id: 3, type: 'AWP', name: 'Asiimov', img: 'img/examples/AWP-Asiimov.png', quality: 'red' },
+      { id: 1, type: 'AKR', name: 'Treasure Hunter', img: 'img/examples/AK-Vulcan.png', quality: 'green' },
+      { id: 2, type: 'M4A4', name: 'Desolate Space', img: 'img/examples/M4A4-DesolateSpace.png', quality: 'purple' },
+      { id: 3, type: 'AWP', name: 'Asiimov', img: 'img/examples/AWP-Asiimov.png', quality: 'red' },
+      { id: 1, type: 'AKR', name: 'Treasure Hunter', img: 'img/examples/AK-Vulcan.png', quality: 'blue' },
+      { id: 3, type: 'AWP', name: 'Asiimov', img: 'img/examples/AWP-Asiimov.png', quality: 'red' },
+      { id: 1, type: 'AKR', name: 'Treasure Hunter', img: 'img/examples/AK-Vulcan.png', quality: 'green' },
+      { id: 2, type: 'M4A4', name: 'Desolate Space', img: 'img/examples/M4A4-DesolateSpace.png', quality: 'purple' },
+      { id: 3, type: 'AWP', name: 'Asiimov', img: 'img/examples/AWP-Asiimov.png', quality: 'red' },
+      { id: 1, type: 'AKR', name: 'Treasure Hunter', img: 'img/examples/AK-Vulcan.png', quality: 'blue' },
+      { id: 3, type: 'AWP', name: 'Asiimov', img: 'img/examples/AWP-Asiimov.png', quality: 'red' },
+      { id: 1, type: 'AKR', name: 'Treasure Hunter', img: 'img/examples/AK-Vulcan.png', quality: 'green' },
+      { id: 2, type: 'M4A4', name: 'Desolate Space', img: 'img/examples/M4A4-DesolateSpace.png', quality: 'purple' },
+      { id: 3, type: 'AWP', name: 'Asiimov', img: 'img/examples/AWP-Asiimov.png', quality: 'red' },
+      { id: 1, type: 'AKR', name: 'Treasure Hunter', img: 'img/examples/AK-Vulcan.png', quality: 'blue' },
+      { id: 3, type: 'AWP', name: 'Asiimov', img: 'img/examples/AWP-Asiimov.png', quality: 'red' },
+      { id: 1, type: 'AKR', name: 'Treasure Hunter', img: 'img/examples/AK-Vulcan.png', quality: 'green' },
+      { id: 2, type: 'M4A4', name: 'Desolate Space', img: 'img/examples/M4A4-DesolateSpace.png', quality: 'purple' },
+      { id: 3, type: 'AWP', name: 'Asiimov', img: 'img/examples/AWP-Asiimov.png', quality: 'red' },
+      { id: 1, type: 'AKR', name: 'Treasure Hunter', img: 'img/examples/AK-Vulcan.png', quality: 'blue' },
+      { id: 3, type: 'AWP', name: 'Asiimov', img: 'img/examples/AWP-Asiimov.png', quality: 'red' },
+      { id: 1, type: 'AKR', name: 'Treasure Hunter', img: 'img/examples/AK-Vulcan.png', quality: 'green' },
+      { id: 2, type: 'M4A4', name: 'Desolate Space', img: 'img/examples/M4A4-DesolateSpace.png', quality: 'purple' },
+      { id: 3, type: 'AWP', name: 'Asiimov', img: 'img/examples/AWP-Asiimov.png', quality: 'red' },
+    ]
+  }),
+  computed: {
+    containerStyles () {
+      return {
+        marginLeft: '0',
+        transition: 'none',
+        width: `${this.itemWidth * this.items.length}px`
+      }
+    },
+    marginToSpin () {
+      return this.itemWidth * 60 - 190
+    }
+  },
   methods: {
     roll () {
-      alert(123)
+      let dropedItem = {
+        id: this.dropedItemId,
+        type: this.dropedItemType,
+        name: this.dropedItemName,
+        img: this.dropedItemImg,
+        quality: this.dropedItemQuality
+      }
+      this.items.splice(69, 1, dropedItem)
+
+      setTimeout(() => {
+        this.$refs.spinContainer.style.marginLeft = `-${this.marginToSpin}px`
+        this.$refs.spinContainer.style.transition = `margin-left ${this.spinTime / 1000}s cubic-bezier(0.215, 0.61, 0.355, 1)`
+      }, this.spinDelay)
     }
   }
 }
@@ -118,7 +245,7 @@ export default {
       align-items: center;
       flex-wrap: nowrap;
       height: 100%;
-      padding-left: 190px;
+      // padding-left: 190px;
       clip-path: polygon(46px 72px, 112px 0, 917px 0, 982px 72px, 917px 144px, 112px 144px);
       &__item {
         z-index: -1;
@@ -158,6 +285,11 @@ export default {
           color: rgba(255, 255, 255, 0.7);
         }
       }
+      &__item.blue { border-color: #026FF4; box-shadow: inset 0px 2px 50px 0 rgba(1, 44, 96, 0.75) }
+      &__item.green { border-color: #5CBAC7; box-shadow: inset 0px 2px 50px 0 rgba(36, 73, 78, 0.75) }
+      &__item.purple { border-color: #EB00FF; box-shadow: inset 0px 2px 50px 0 rgba(92, 0, 100, 0.75) }
+      &__item.red { border-color: #FF0000; box-shadow: inset 0px 2px 50px 0 rgba(255, 0, 0, 0.25) }
+      &__item.yellow { border-color: #FFD600; box-shadow: inset 0px 2px 50px 0 rgba(100, 88, 0, 0.75) }
     }
   }
 }

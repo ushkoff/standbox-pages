@@ -33,23 +33,24 @@
     </div>
 
     <div
-      v-for="n in 12"
-      :key="n"
+      v-for="item in items"
+      :key="item.id"
       class="items-sidebar__livedrop__item"
       :style="`background-image: url('${require('@/assets/img/app/livedrop/livedrop-sprites.png')}')`"
-      style="background-position: -297px"
+      :class="{ blue: item.quality === 'blue', green: item.quality === 'green', purple: item.quality === 'purple', red: item.quality === 'red', yellow: item.quality === 'yellow' }"
     >
-      <!--  YELLOW -583px -->
-      <!--  RED -439px -->
-      <!--  PURPLE -297px -->
-      <!--  GREEN -153px -->
-      <!--  BLUE -9px -->
+      <!-- уже прописано -->
+      <!--  YELLOW background-position: -583px -->
+      <!--  RED background-position: -438px -->
+      <!--  PURPLE background-position: -295px -->
+      <!--  GREEN background-position: -153px -->
+      <!--  BLUE background-position: -9px -->
       <div
         class="items-sidebar__livedrop__item--img"
-        :style="`background-image: url('${require('@/assets/img/examples/AK-Vulcan.png')}')`"
+        :style="`background-image: url('${require(`@/assets/${item.img}`)}')`"
       >
       </div>
-      <span class="items-sidebar__livedrop__item--name">Treasure Hunter</span>
+      <span class="items-sidebar__livedrop__item--name">{{ item.name }}</span>
       </div>
     </div>
 
@@ -61,7 +62,23 @@
 export default {
   data: () => ({
     activeBtn: true,
-    activeAddInfo: true
+    activeAddInfo: true,
+    items: [
+      { id: 1, type: 'AKR', name: 'Treasure Hunter', img: 'img/examples/AK-Vulcan.png', quality: 'blue' },
+      { id: 2, type: 'AWP', name: 'Asiimov', img: 'img/examples/AWP-Asiimov.png', quality: 'red' },
+      { id: 3, type: 'AKR', name: 'Treasure Hunter', img: 'img/examples/AK-Vulcan.png', quality: 'green' },
+      { id: 4, type: 'M4A4', name: 'Desolate Space', img: 'img/examples/M4A4-DesolateSpace.png', quality: 'purple' },
+      { id: 5, type: 'AWP', name: 'Asiimov', img: 'img/examples/AWP-Asiimov.png', quality: 'red' },
+      { id: 6, type: 'AKR', name: 'Treasure Hunter', img: 'img/examples/AK-Vulcan.png', quality: 'blue' },
+      { id: 7, type: 'AWP', name: 'Asiimov', img: 'img/examples/AWP-Asiimov.png', quality: 'red' },
+      { id: 8, type: 'AKR', name: 'Treasure Hunter', img: 'img/examples/AK-Vulcan.png', quality: 'green' },
+      { id: 9, type: 'M4A4', name: 'Desolate Space', img: 'img/examples/M4A4-DesolateSpace.png', quality: 'purple' },
+      { id: 10, type: 'AWP', name: 'Asiimov', img: 'img/examples/AWP-Asiimov.png', quality: 'red' },
+      { id: 11, type: 'AKR', name: 'Treasure Hunter', img: 'img/examples/AK-Vulcan.png', quality: 'blue' },
+      { id: 12, type: 'AWP', name: 'Asiimov', img: 'img/examples/AWP-Asiimov.png', quality: 'red' },
+      { id: 13, type: 'AKR', name: 'Treasure Hunter', img: 'img/examples/AK-Vulcan.png', quality: 'green' },
+      { id: 14, type: 'M4A4', name: 'Desolate Space', img: 'img/examples/M4A4-DesolateSpace.png', quality: 'purple' },
+    ]
   })
 }
 </script>
@@ -193,6 +210,12 @@ export default {
         }
       }
     }
+
+    &__item.blue { background-position: -9px }
+    &__item.green { background-position: -153px }
+    &__item.purple { background-position: -295px }
+    &__item.red { background-position: -438px }
+    &__item.yellow { background-position: -583px }
   }
 }
 </style>

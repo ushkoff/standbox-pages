@@ -38,7 +38,7 @@
         <div class="user-profile__stat__block">
           <div
             class="skin-img"
-            :style="`background-image: url('${require('@/assets/img/examples/AK-Vulcan.png')}')`"
+            :style="`background-image: url('${require(`@/assets/${topDrop.img}`)}')`"
           >
           </div>
           <span class="type">Топовый дроп</span>
@@ -46,7 +46,7 @@
         <div class="user-profile__stat__block">
           <div
             class="case-img"
-            :style="`background-image: url('${require('@/assets/img/examples/csgo-case.png')}')`"
+            :style="`background-image: url('${require(`@/assets/${topCase.img}`)}')`"
           >
           </div>
           <span class="type">Любимый кейс</span>
@@ -63,30 +63,65 @@
     </div>
     <div class="user-drop__items">
       <div
-        v-for="n in 21"
-        :key="n"
+        v-for="item in userItems"
+        :key="item.id"
         class="case-item"
         :style="`background-image: url('${require('@/assets/img/pages/skindes-sprites.png')}')`"
-        style="background-position: -900px 45%"
+        :class="{ blue: item.quality === 'blue', green: item.quality === 'green', purple: item.quality === 'purple', red: item.quality === 'red', yellow: item.quality === 'yellow' }"
       >
-        <!--  YELLOW -900px -->
-        <!--  RED -675px -->
-        <!--  PURPLE -455px -->
-        <!--  GREEN -230px -->
-        <!--  BLUE -10px -->
-        <div class="case-item__buttons">
-          <img src="@/assets/img/pages/plus-inv.svg">
-          <img src="@/assets/img/pages/minus-inv.svg">
+        <!-- уже прописано -->
+        <!--  YELLOW background-position: -900px 45% -->
+        <!--  RED background-position: -675px 45% -->
+        <!--  PURPLE background-position: -455px 45% -->
+        <!--  GREEN background-position: -230px 45% -->
+        <!--  BLUE background-position:-10px 45% -->
+        <div class="case-item-img-container">
+          <img class="case-item__img" :src="require(`@/assets/${item.img}`)">
         </div>
-        <img class="case-item__img" src="@/assets/img/examples/AK-Vulcan.png">
-        <span class="case-item__type">AKR</span>
-        <span class="case-item__name">Treasure Hunter</span>
+        <span class="case-item__type">{{ item.type }}</span>
+        <span class="case-item__name">{{ item.name }}</span>
       </div>
     </div>
   </div>
 
 </div>
 </template>
+
+<script>
+export default {
+  data: () => ({
+    topDrop: {
+      img: 'img/examples/AK-Vulcan.png'
+    },
+    topCase: {
+      img: 'img/examples/csgo-case.png'
+    },
+    userItems: [
+      { id: 1, type: 'AKR', name: 'Treasure Hunter', img: 'img/examples/AK-Vulcan.png', quality: 'blue' },
+      { id: 2, type: 'AWP', name: 'Asiimov', img: 'img/examples/AWP-Asiimov.png', quality: 'red' },
+      { id: 3, type: 'AKR', name: 'Treasure Hunter', img: 'img/examples/AK-Vulcan.png', quality: 'green' },
+      { id: 4, type: 'M4A4', name: 'Desolate Space', img: 'img/examples/M4A4-DesolateSpace.png', quality: 'purple' },
+      { id: 5, type: 'AWP', name: 'Asiimov', img: 'img/examples/AWP-Asiimov.png', quality: 'red' },
+      { id: 6, type: 'AKR', name: 'Treasure Hunter', img: 'img/examples/AK-Vulcan.png', quality: 'blue' },
+      { id: 7, type: 'AWP', name: 'Asiimov', img: 'img/examples/AWP-Asiimov.png', quality: 'red' },
+      { id: 8, type: 'AKR', name: 'Treasure Hunter', img: 'img/examples/AK-Vulcan.png', quality: 'green' },
+      { id: 9, type: 'M4A4', name: 'Desolate Space', img: 'img/examples/M4A4-DesolateSpace.png', quality: 'purple' },
+      { id: 10, type: 'AWP', name: 'Asiimov', img: 'img/examples/AWP-Asiimov.png', quality: 'red' },
+      { id: 11, type: 'AKR', name: 'Treasure Hunter', img: 'img/examples/AK-Vulcan.png', quality: 'blue' },
+      { id: 12, type: 'AWP', name: 'Asiimov', img: 'img/examples/AWP-Asiimov.png', quality: 'red' },
+      { id: 13, type: 'AKR', name: 'Treasure Hunter', img: 'img/examples/AK-Vulcan.png', quality: 'green' },
+      { id: 14, type: 'M4A4', name: 'Desolate Space', img: 'img/examples/M4A4-DesolateSpace.png', quality: 'purple' },
+      { id: 15, type: 'AKR', name: 'Treasure Hunter', img: 'img/examples/AK-Vulcan.png', quality: 'blue' },
+      { id: 16, type: 'AWP', name: 'Asiimov', img: 'img/examples/AWP-Asiimov.png', quality: 'red' },
+      { id: 17, type: 'AKR', name: 'Treasure Hunter', img: 'img/examples/AK-Vulcan.png', quality: 'green' },
+      { id: 18, type: 'M4A4', name: 'Desolate Space', img: 'img/examples/M4A4-DesolateSpace.png', quality: 'purple' },
+      { id: 19, type: 'M4A4', name: 'Desolate Space', img: 'img/examples/M4A4-DesolateSpace.png', quality: 'purple' },
+      { id: 20, type: 'M4A4', name: 'Desolate Space', img: 'img/examples/M4A4-DesolateSpace.png', quality: 'purple' },
+      { id: 21, type: 'M4A4', name: 'Desolate Space', img: 'img/examples/M4A4-DesolateSpace.png', quality: 'purple' },
+    ]
+  })
+}
+</script>
 
 <style lang="less" scoped>
 @import '~assets/less/utils/_vars';
@@ -254,6 +289,7 @@
 
 .user-drop {
   margin-top: 33px;
+  margin-bottom: 250px;
   &__buttons {
     margin-left: 100px;
     margin-top: 66px;

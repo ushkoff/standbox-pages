@@ -123,15 +123,15 @@
         font-family: Roboto Condensed;
         font-style: normal;
         font-weight: bold;
-        font-size: 24px;
+        font-size: 22px;
         color: @defFontYellow;
         text-decoration: none !important;
         margin-left: 10px;
         &:before {
           z-index: -1;
           content: '';
-          width: 20.5px;
-          height: 20.5px;
+          width: 18.5px;
+          height: 18.5px;
           background-color: @defPurpleBg;
           position: absolute;
           left: -10px;
@@ -141,8 +141,8 @@
         &:after {
           z-index: -1;
           content: '';
-          width: 20.5px;
-          height: 20.5px;
+          width: 18.5px;
+          height: 18.5px;
           background-color: @defPurpleBg;
           position: absolute;
           right: -10px;

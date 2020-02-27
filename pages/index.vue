@@ -2,7 +2,7 @@
 <div>
   <div class="special-cases">
     <a
-      href="#"
+      href="/case"
       class="special-cases__case special-cases__case--green case-block"
       :style="`background-image: url('${require('@/assets/img/cases/everyday-case.png')}')`"
     >
@@ -15,7 +15,8 @@
         <span>Бесплатный Кейс</span>
       </div>
     </a>
-    <div
+    <a
+      href="/case"
       class="special-cases__case special-cases__case--blue case-block"
       :style="`background-image: url('${require('@/assets/img/cases/free4like-case.png')}')`"
     >
@@ -27,7 +28,7 @@
       <div class="case-costs">
         <span>Бесплатный Кейс</span>
       </div>
-    </div>
+    </a>
   </div>
 
   <div class="all-cases">
@@ -47,7 +48,7 @@
       <a
         v-for="n in 10"
         :key="n"
-        href="#"
+        href="/case"
         class="case-block"
         :style="`background-image: url('${require('@/assets/img/cases/epic-case.png')}')`"
       >
