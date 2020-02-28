@@ -9,28 +9,28 @@
     </div>
   </div>
   <div class="items-sidebar__livedrop">
-    <div
+    <!-- <div
       class="items-sidebar__livedrop__item"
       :style="`background-image: url('${require('@/assets/img/app/livedrop/livedrop-sprites.png')}')`"
-      style="background-position: -439px"
+      :class="{ blue: correctItem.quality === 'blue', green: correctItem.quality === 'green', purple: correctItem.quality === 'purple', red: correctItem.quality === 'red', yellow: correctItem.quality === 'yellow' }"
       @mouseover="activeAddInfo = true"
     >
       <div
         class="items-sidebar__livedrop__item--img"
-        :style="`background-image: url('${require('@/assets/img/examples/AK-Vulcan.png')}')`"
+        :style="`background-image: url('${require(`@/assets/${correctItem.img}`)}')`"
       >
       </div>
-      <span class="items-sidebar__livedrop__item--name">Treasure Hunter</span>
+      <span class="items-sidebar__livedrop__item--name">{{ correctItem.name }}</span>
 
       <div class="items-sidebar__livedrop__item--info" v-if="activeAddInfo">
         <div class="user-info">
-          <img src="@/assets/img/examples/user-avatar.png">
-          <span>Илья С.</span>
+          <img :src="require(`@/assets/${correctItem.userImg}`)">
+          <span>{{ correctItem.userName }}</span>
         </div>
-        <img src="@/assets/img/examples/csgo-case.png" class="case-img">
-        <span class="case-type">Обычный</span>
+        <img :src="require(`@/assets/${correctItem.caseImg}`)" class="case-img">
+        <span class="case-type">{{ correctItem.caseName }}</span>
       </div>
-    </div>
+    </div> -->
 
     <div
       v-for="item in items"
@@ -38,6 +38,8 @@
       class="items-sidebar__livedrop__item"
       :style="`background-image: url('${require('@/assets/img/app/livedrop/livedrop-sprites.png')}')`"
       :class="{ blue: item.quality === 'blue', green: item.quality === 'green', purple: item.quality === 'purple', red: item.quality === 'red', yellow: item.quality === 'yellow' }"
+      @mouseover="showAdditionalInfo"
+      @mouseleave="hideAdditionalInfo"
     >
       <!-- уже прописано -->
       <!--  YELLOW background-position: -583px -->
@@ -51,6 +53,13 @@
       >
       </div>
       <span class="items-sidebar__livedrop__item--name">{{ item.name }}</span>
+      <div class="items-sidebar__livedrop__item--info">
+        <div class="user-info">
+          <img :src="require(`@/assets/${item.userImg}`)">
+          <span>{{ item.userName }}</span>
+        </div>
+        <img :src="require(`@/assets/${item.caseImg}`)" class="case-img">
+        <span class="case-type">{{ item.caseName }}</span>
       </div>
     </div>
 
@@ -64,22 +73,30 @@ export default {
     activeBtn: true,
     activeAddInfo: true,
     items: [
-      { id: 1, type: 'AKR', name: 'Treasure Hunter', img: 'img/examples/AK-Vulcan.png', quality: 'blue' },
-      { id: 2, type: 'AWP', name: 'Asiimov', img: 'img/examples/AWP-Asiimov.png', quality: 'red' },
-      { id: 3, type: 'AKR', name: 'Treasure Hunter', img: 'img/examples/AK-Vulcan.png', quality: 'green' },
-      { id: 4, type: 'M4A4', name: 'Desolate Space', img: 'img/examples/M4A4-DesolateSpace.png', quality: 'purple' },
-      { id: 5, type: 'AWP', name: 'Asiimov', img: 'img/examples/AWP-Asiimov.png', quality: 'red' },
-      { id: 6, type: 'AKR', name: 'Treasure Hunter', img: 'img/examples/AK-Vulcan.png', quality: 'blue' },
-      { id: 7, type: 'AWP', name: 'Asiimov', img: 'img/examples/AWP-Asiimov.png', quality: 'red' },
-      { id: 8, type: 'AKR', name: 'Treasure Hunter', img: 'img/examples/AK-Vulcan.png', quality: 'green' },
-      { id: 9, type: 'M4A4', name: 'Desolate Space', img: 'img/examples/M4A4-DesolateSpace.png', quality: 'purple' },
-      { id: 10, type: 'AWP', name: 'Asiimov', img: 'img/examples/AWP-Asiimov.png', quality: 'red' },
-      { id: 11, type: 'AKR', name: 'Treasure Hunter', img: 'img/examples/AK-Vulcan.png', quality: 'blue' },
-      { id: 12, type: 'AWP', name: 'Asiimov', img: 'img/examples/AWP-Asiimov.png', quality: 'red' },
-      { id: 13, type: 'AKR', name: 'Treasure Hunter', img: 'img/examples/AK-Vulcan.png', quality: 'green' },
-      { id: 14, type: 'M4A4', name: 'Desolate Space', img: 'img/examples/M4A4-DesolateSpace.png', quality: 'purple' },
+      { id: 1, type: 'AKR', name: 'Treasure Hunter', img: 'img/examples/AK-Vulcan.png', quality: 'blue', userName: 'Dobrya4ello', userImg: 'img/examples/user-avatar.png', caseName: 'Обычный', caseImg: 'img/examples/csgo-case.png' },
+      { id: 2, type: 'AWP', name: 'Asiimov', img: 'img/examples/AWP-Asiimov.png', quality: 'red', userName: 'Dobrya4ello', userImg: 'img/examples/user-avatar.png', caseName: 'Обычный', caseImg: 'img/examples/csgo-case.png' },
+      { id: 3, type: 'AKR', name: 'Treasure Hunter', img: 'img/examples/AK-Vulcan.png', quality: 'green', userName: 'Dobrya4ello', userImg: 'img/examples/user-avatar.png', caseName: 'Обычный', caseImg: 'img/examples/csgo-case.png' },
+      { id: 4, type: 'M4A4', name: 'Desolate Space', img: 'img/examples/M4A4-DesolateSpace.png', quality: 'purple', userName: 'Dobrya4ello', userImg: 'img/examples/user-avatar.png', caseName: 'Обычный', caseImg: 'img/examples/csgo-case.png' },
+      { id: 5, type: 'AWP', name: 'Asiimov', img: 'img/examples/AWP-Asiimov.png', quality: 'red', userName: 'Dobrya4ello', userImg: 'img/examples/user-avatar.png', caseName: 'Обычный', caseImg: 'img/examples/csgo-case.png' },
+      { id: 6, type: 'AKR', name: 'Treasure Hunter', img: 'img/examples/AK-Vulcan.png', quality: 'blue', userName: 'Dobrya4ello', userImg: 'img/examples/user-avatar.png', caseName: 'Обычный', caseImg: 'img/examples/csgo-case.png' },
+      { id: 7, type: 'AWP', name: 'Asiimov', img: 'img/examples/AWP-Asiimov.png', quality: 'red', userName: 'Dobrya4ello', userImg: 'img/examples/user-avatar.png', caseName: 'Обычный', caseImg: 'img/examples/csgo-case.png' },
+      { id: 8, type: 'AKR', name: 'Treasure Hunter', img: 'img/examples/AK-Vulcan.png', quality: 'green', userName: 'Dobrya4ello', userImg: 'img/examples/user-avatar.png', caseName: 'Обычный', caseImg: 'img/examples/csgo-case.png' },
+      { id: 9, type: 'M4A4', name: 'Desolate Space', img: 'img/examples/M4A4-DesolateSpace.png', quality: 'purple', userName: 'Dobrya4ello', userImg: 'img/examples/user-avatar.png', caseName: 'Обычный', caseImg: 'img/examples/csgo-case.png' },
+      { id: 10, type: 'AWP', name: 'Asiimov', img: 'img/examples/AWP-Asiimov.png', quality: 'red', userName: 'Dobrya4ello', userImg: 'img/examples/user-avatar.png', caseName: 'Обычный', caseImg: 'img/examples/csgo-case.png' },
+      { id: 11, type: 'AKR', name: 'Treasure Hunter', img: 'img/examples/AK-Vulcan.png', quality: 'blue', userName: 'Dobrya4ello', userImg: 'img/examples/user-avatar.png', caseName: 'Обычный', caseImg: 'img/examples/csgo-case.png' },
+      { id: 12, type: 'AWP', name: 'Asiimov', img: 'img/examples/AWP-Asiimov.png', quality: 'red', userName: 'Dobrya4ello', userImg: 'img/examples/user-avatar.png', caseName: 'Обычный', caseImg: 'img/examples/csgo-case.png' },
+      { id: 13, type: 'AKR', name: 'Treasure Hunter', img: 'img/examples/AK-Vulcan.png', quality: 'green', userName: 'Dobrya4ello', userImg: 'img/examples/user-avatar.png', caseName: 'Обычный', caseImg: 'img/examples/csgo-case.png' },
+      { id: 14, type: 'M4A4', name: 'Desolate Space', img: 'img/examples/M4A4-DesolateSpace.png', quality: 'purple', userName: 'Dobrya4ello', userImg: 'img/examples/user-avatar.png', caseName: 'Обычный', caseImg: 'img/examples/csgo-case.png' },
     ]
-  })
+  }),
+  methods: {
+    showAdditionalInfo (e) {
+      e.currentTarget.lastChild.style.display = 'flex'
+    },
+    hideAdditionalInfo (e) {
+      e.currentTarget.lastChild.style.display = 'none'
+    }
+  }
 }
 </script>
 
@@ -150,7 +167,7 @@ export default {
       }
 
       &--info {
-        display: flex;
+        display: none;
         align-items: center;
         justify-content: space-between;
         flex-direction: column;
