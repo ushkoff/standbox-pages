@@ -156,7 +156,10 @@ export default {
       }
     },
     marginToSpin () {
-      return this.itemWidth * 60 - 190
+      return this.itemWidth * 60
+    },
+    randomMargin () {
+      return Math.floor(Math.random() * Math.floor(380))
     }
   },
   methods: {
@@ -171,7 +174,7 @@ export default {
       this.items.splice(69, 1, dropedItem)
 
       setTimeout(() => {
-        this.$refs.spinContainer.style.marginLeft = `-${this.marginToSpin}px`
+        this.$refs.spinContainer.style.marginLeft = `-${this.marginToSpin - this.randomMargin}px`
         this.$refs.spinContainer.style.transition = `margin-left ${this.spinTime / 1000}s cubic-bezier(0.215, 0.61, 0.355, 1)`
       }, this.spinDelay)
     }

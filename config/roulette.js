@@ -1,4 +1,4 @@
 export default {
-  spinTime: 5000,
+  spinTime: 6000,
   afterSpinDelay: 2000
 }
