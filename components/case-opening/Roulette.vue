@@ -30,7 +30,11 @@
           <!--  PURPLE border-color: #EB00FF; box-shadow: inset 0px 2px 50px 0 rgba(92, 0, 100, 0.75) -->
           <!--  GREEN border-color: #5CBAC7; box-shadow: inset 0px 2px 50px 0 rgba(36, 73, 78, 0.75) -->
           <!--  BLUE border-color: #026FF4; box-shadow: inset 0px 2px 50px 0 rgba(1, 44, 96, 0.75) -->
-          <img class="item-img" :src="require(`@/assets/${item.img}`)">
+          <div
+            class="item-img"
+            :style="`background-image: url('${require(`@/assets/${item.img}`)}')`"
+          >
+          </div>
           <span class="item-type">{{ item.type }}</span>
           <span class="item-name">{{ item.name }}</span>
         </div>
@@ -261,6 +265,10 @@ export default {
         margin-left: 3px;
         .item-img {
           width: 185px;
+          height: 85px;
+          background-repeat: no-repeat;
+          background-position: center;
+          background-size: contain;
           transform: rotate(15deg);
           z-index: -1;
         }

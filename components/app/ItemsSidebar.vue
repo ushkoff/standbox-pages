@@ -58,7 +58,11 @@
           <img :src="require(`@/assets/${item.userImg}`)">
           <span>{{ item.userName }}</span>
         </div>
-        <img :src="require(`@/assets/${item.caseImg}`)" class="case-img">
+        <div
+          class="case-img"
+          :style="`background-image: url('${require(`@/assets/${item.caseImg}`)}')`"
+        >
+        </div>
         <span class="case-type">{{ item.caseName }}</span>
       </div>
     </div>
@@ -155,6 +159,7 @@ export default {
         background-size: contain;
         background-position: center 45%;
         transform: rotate(15deg);
+        z-index: -1;
       }
       &--name {
         display: block;
@@ -216,6 +221,10 @@ export default {
         }
         .case-img {
           display: block;
+          background-repeat: no-repeat;
+          background-position: center;
+          background-size: contain;
+          width: 100%;
           height: 75px;
         }
         .case-type {

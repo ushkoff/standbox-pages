@@ -110,7 +110,7 @@
   flex-direction: column;
   padding: 20px;
   margin-top: 20px;
-  background-size: cover;
+  background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
   .case-name {

@@ -76,7 +76,11 @@
         <!--  GREEN background-position: -230px 45% -->
         <!--  BLUE background-position:-10px 45% -->
         <div class="case-item-img-container">
-          <img class="case-item__img" :src="require(`@/assets/${item.img}`)">
+          <div
+            class="case-item__img"
+            :style="`background-image: url('${require(`@/assets/${item.img}`)}')`"
+          >
+          </div>
         </div>
         <span class="case-item__type">{{ item.type }}</span>
         <span class="case-item__name">{{ item.name }}</span>
@@ -226,7 +230,7 @@ export default {
         transform: rotate(15deg);
         margin-bottom: 32px;
         background-position: center;
-        background-size: cover;
+        background-size: contain;
         background-repeat: no-repeat;
         @media screen and (max-width: 1625px) {
           width: 200px;
@@ -238,7 +242,7 @@ export default {
         height: 120px;
         margin: 15px;
         background-position: center;
-        background-size: cover;
+        background-size: contain;
         background-repeat: no-repeat;
         @media screen and (max-width: 1625px) {
           width: 125px;

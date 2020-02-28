@@ -74,7 +74,11 @@
       <!--  PURPLE background-position: -2080px -100px -->
       <!--  GREEN background-position: -1035px -100px -->
       <!--  BLUE background-position: -0px -100px -->
-      <img class="case-opened__item__img" :src="require(`@/assets/${dropedItem.img}`)">
+      <div
+        class="case-opened__item__img"
+        :style="`background-image: url('${require(`@/assets/${dropedItem.img}`)}`"
+      >
+      </div>
     </div>
     <div class="case-opened__buttons">
       <button class="case-opened__buttons--grey">Попробовать ещё</button>
@@ -109,8 +113,10 @@
         <!--  PURPLE background-position: -455px 45% -->
         <!--  GREEN background-position: -230px 45% -->
         <!--  BLUE background-position:-10px 45% -->
-        <div class="case-item-img-container">
-          <img class="case-item__img" :src="require(`@/assets/${item.img}`)">
+        <div
+          class="case-item__img"
+          :style="`background-image: url('${require(`@/assets/${item.img}`)}')`"
+        >
         </div>
         <span class="case-item__type">{{ item.type }}</span>
         <span class="case-item__name">{{ item.name }}</span>
@@ -137,7 +143,7 @@ export default {
       id: 1337,
       type: 'AWP',
       name: 'FINAL DROP',
-      img: 'img/examples/AWP-Asiimov.png',
+      img: 'img/examples/M4A4-DesolateSpace.png',
       quality: 'yellow',
       cost: '10.500₽'
     },
@@ -449,7 +455,11 @@ export default {
     height: 300px;
     &__img {
       width: 530px;
-      margin-top: 125px;
+      height: 300px;
+      margin-top: 45px;
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center;
     }
   }
 
