@@ -253,7 +253,7 @@ export default {
       flex-wrap: nowrap;
       height: 100%;
       // padding-left: 190px;
-      clip-path: polygon(46px 72px, 112px 0, 917px 0, 982px 72px, 917px 144px, 112px 144px);
+      clip-path: polygon(46px 72px, 112px 0, 490px 0, 515px 16px, 530px 0, 917px 0, 982px 72px, 917px 144px, 530px 144px, 515px 128px, 490px 144px, 112px 144px);
       &__item {
         z-index: -1;
         position: relative;
