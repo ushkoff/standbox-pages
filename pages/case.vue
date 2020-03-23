@@ -40,8 +40,8 @@
     </button>
     <div class="open-case__times">
       <ul>
-        <li class="active">x1</li>
-        <li>x2</li>
+        <li>x1</li>
+        <li class="active">x2</li>
         <li>x3</li>
         <li>x4</li>
         <li>x5</li>
@@ -355,13 +355,14 @@ export default {
             z-index: -1;
             content: '';
             position: absolute;
-            width: 25px;
-            height: 25px;
-            top: 4.5px;
-            left: -13px;
+            width: 27px;
+            height: 27px;
+            top: 4.25px;
+            left: -14px;
             border-left: 1px solid @defPurpleBorder;
             border-bottom: 1px solid @defPurpleBorder;
             transform: rotate(45deg);
+            clip-path: polygon(-1px 27px, 0.5px 0, 29px 28px);
           }
         }
         &:last-child {
@@ -371,17 +372,21 @@ export default {
             z-index: -1;
             content: '';
             position: absolute;
-            width: 26px;
-            height: 26px;
-            top: 4.5px;
-            right: -13px;
+            width: 27px;
+            height: 27px;
+            top: 4.25px;
+            right: -14px;
             border-right: 1px solid @defPurpleBorder;
             border-bottom: 1px solid @defPurpleBorder;
             transform: rotate(-45deg);
+            clip-path: polygon(27px -0.5px, 28px 28px, -0.5px 27px);
           }
         }
         &:hover {
           background-color: rgba(109, 28, 212, 0.33);
+          &:before, &:after {
+            background-color: rgba(109, 28, 212, 0.33);
+          }
         }
       }
       li.active {
