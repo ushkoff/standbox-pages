@@ -362,7 +362,7 @@ export default {
             border-left: 1px solid @defPurpleBorder;
             border-bottom: 1px solid @defPurpleBorder;
             transform: rotate(45deg);
-            clip-path: polygon(-1px 27px, 0.5px 0, 29px 28px);
+            clip-path: polygon(-1px 27px, 1px 0, 29px 28px);
           }
         }
         &:last-child {
@@ -379,7 +379,7 @@ export default {
             border-right: 1px solid @defPurpleBorder;
             border-bottom: 1px solid @defPurpleBorder;
             transform: rotate(-45deg);
-            clip-path: polygon(27px -0.5px, 28px 28px, -0.5px 27px);
+            clip-path: polygon(27px -1px, 28px 28px, -1px 27px);
           }
         }
         &:hover {
